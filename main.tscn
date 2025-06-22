@@ -125,6 +125,7 @@ script = ExtResource("1_yvxag")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.276412, 0)
 billboard = 2
+shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_ed6sh")
 animation = &"walk"
@@ -135,27 +136,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00216804, 0.233171, 0)
 shape = SubResource("CapsuleShape3D_2tnrm")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.934881, 0.35496, 0, -0.35496, 0.934881, 0, 0.496744, 0.797794)
+transform = Transform3D(1, 0, 0, 0, 0.856654, 0.515891, 0, -0.515891, 0.856654, -0.0459725, 0.90902, 1.1134)
+near = 0.337
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 libraries = {
 "": SubResource("AnimationLibrary_nqoxx")
 }
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.716858, -0.138275, -0.218262)
-use_collision = true
-size = Vector3(2.43372, 0.32904, 1.43652)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.188015, 0.113043, -0.290153)
-use_collision = true
-size = Vector3(2.04941, 0.32904, 0.169434)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.176464, 0.113043, -0.290153)
-use_collision = true
-size = Vector3(2.02631, 0.32904, 0.169434)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.98001, -0.186038, 0.0705056, 0.134796, 0.881547, 0.452444, -0.146325, -0.433896, 0.889001, 0.669135, 1.32468, 1.9471)
+
+[node name="Main Area" type="Node" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Main Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.484466, -0.00978857, -0.219329)
+use_collision = true
+size = Vector3(1.96894, 0.0720671, 1.43439)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Main Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677418, 0.0852873, -0.515748)
+use_collision = true
+size = Vector3(1.58237, 0.108001, 0.169434)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Main Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.469498, 0.310905, -0.219841)
+use_collision = true
+size = Vector3(0.0648193, 0.712296, 1.43652)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Main Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43808, 0.317739, -0.220913)
+use_collision = true
+size = Vector3(0.0690918, 0.702698, 1.4375)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Main Area"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.482768, 0.321294, -0.970828)
+use_collision = true
+size = Vector3(0.0690918, 0.695587, 1.97803)
