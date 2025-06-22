@@ -1,9 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://byrri007p6dg"]
+[gd_scene load_steps=28 format=3 uid="uid://byrri007p6dg"]
 
 [ext_resource type="Texture2D" uid="uid://g2xyvk2djdav" path="res://resources/AnimationSheet.png" id="1_0ujs2"]
 [ext_resource type="Script" path="res://Player.gd" id="1_yvxag"]
 [ext_resource type="Texture2D" uid="uid://bc8hfvhsp0v53" path="res://resources/smol_paper_sprite.png" id="2_vtv2g"]
 [ext_resource type="Script" path="res://AnimatedSprite3D.gd" id="3_wa5qy"]
+[ext_resource type="Texture2D" uid="uid://ckodjmkhgsyda" path="res://resources/d_buttons_down.png" id="5_74v47"]
+[ext_resource type="PackedScene" uid="uid://cd5cpqmfvhea8" path="res://frontentrance.tscn" id="5_juxe8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_k6tc1"]
 
@@ -163,12 +165,18 @@ _data = {
 "walk": SubResource("Animation_of148")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_clgv3"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mmnci")
 
 [node name="Player" type="CharacterBody3D" parent="."]
+collision_layer = 2
 script = ExtResource("1_yvxag")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player"]
@@ -176,8 +184,7 @@ transform = Transform3D(0.211741, 0, 0, 0, 0.211741, 0, 0, 0, 0.211741, 0, 0.276
 billboard = 2
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_a1oeb")
-animation = &"walk"
-frame_progress = 0.678928
+frame_progress = 0.464699
 script = ExtResource("3_wa5qy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
@@ -192,8 +199,11 @@ libraries = {
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.97088, 0.239567, 0, -0.239567, 0.97088, 0, 0.492369, 0.952982)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.98001, -0.186038, 0.0705056, 0.134796, 0.881547, 0.452444, -0.146325, -0.433896, 0.889001, 0.669135, 1.32468, 1.9471)
+[node name="Sprite3D" type="Sprite3D" parent="Player"]
+transform = Transform3D(0.0101823, 0, 0, 0, 0.00949769, 0, 0, 0, 1, 0, 0.446877, 0)
+visible = false
+billboard = 1
+texture = ExtResource("5_74v47")
 
 [node name="Main Area" type="Node" parent="."]
 
@@ -208,9 +218,9 @@ use_collision = true
 size = Vector3(1.58237, 0.108001, 0.169434)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Main Area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.469498, 0.310905, -0.219841)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.469498, 0.310905, -0.22004)
 use_collision = true
-size = Vector3(0.0648193, 0.712296, 1.43652)
+size = Vector3(0.0648193, 0.712296, 1.43613)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Main Area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43808, 0.317739, -0.220913)
@@ -221,3 +231,19 @@ size = Vector3(0.0690918, 0.702698, 1.4375)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.482768, 0.321294, -0.970828)
 use_collision = true
 size = Vector3(0.0690918, 0.695587, 1.97803)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Main Area"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.482768, 0.321294, 0.533422)
+visible = false
+use_collision = true
+size = Vector3(0.0690918, 0.695587, 1.97803)
+material = SubResource("StandardMaterial3D_clgv3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13038, 0.805688, 0)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.358504, 0.805688, 0)
+
+[node name="Node3D" parent="." instance=ExtResource("5_juxe8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.512547, 0.138024, 0.40245)
