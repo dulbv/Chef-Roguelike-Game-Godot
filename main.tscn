@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://byrri007p6dg"]
+[gd_scene load_steps=25 format=3 uid="uid://byrri007p6dg"]
 
 [ext_resource type="Texture2D" uid="uid://g2xyvk2djdav" path="res://resources/AnimationSheet.png" id="1_0ujs2"]
 [ext_resource type="Script" path="res://Player.gd" id="1_yvxag"]
+[ext_resource type="Texture2D" uid="uid://bc8hfvhsp0v53" path="res://resources/smol_paper_sprite.png" id="2_vtv2g"]
 [ext_resource type="Script" path="res://AnimatedSprite3D.gd" id="3_wa5qy"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_k6tc1"]
@@ -16,6 +17,74 @@ sky = SubResource("Sky_kp0tl")
 sky_custom_fov = 100.5
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahaun"]
+atlas = ExtResource("2_vtv2g")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6smv"]
+atlas = ExtResource("2_vtv2g")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35g5r"]
+atlas = ExtResource("2_vtv2g")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ihsi"]
+atlas = ExtResource("2_vtv2g")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0aqqb"]
+atlas = ExtResource("2_vtv2g")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a1oeb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahaun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6smv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35g5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ihsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0aqqb")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2tnrm"]
+radius = 0.0486725
+height = 0.167321
+
+[sub_resource type="Animation" id="Animation_gs7qv"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [&"default", &"default", &"default"]
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwqju"]
 atlas = ExtResource("1_0ujs2")
@@ -72,26 +141,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2tnrm"]
-radius = 0.0486725
-height = 0.167321
-
-[sub_resource type="Animation" id="Animation_gs7qv"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite3D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [&"default", &"default", &"default"]
-}
-
 [sub_resource type="Animation" id="Animation_of148"]
 resource_name = "walk"
 loop_mode = 1
@@ -123,26 +172,26 @@ environment = SubResource("Environment_mmnci")
 script = ExtResource("1_yvxag")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.276412, 0)
+transform = Transform3D(0.211741, 0, 0, 0, 0.211741, 0, 0, 0, 0.211741, 0, 0.276412, 0)
 billboard = 2
 shaded = true
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_ed6sh")
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_a1oeb")
 animation = &"walk"
+frame_progress = 0.460253
 script = ExtResource("3_wa5qy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00216804, 0.233171, 0)
 shape = SubResource("CapsuleShape3D_2tnrm")
 
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.856654, 0.515891, 0, -0.515891, 0.856654, -0.0459725, 0.90902, 1.1134)
-near = 0.337
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 libraries = {
 "": SubResource("AnimationLibrary_nqoxx")
 }
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.97088, 0.239567, 0, -0.239567, 0.97088, 0, 0.492369, 0.952982)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.98001, -0.186038, 0.0705056, 0.134796, 0.881547, 0.452444, -0.146325, -0.433896, 0.889001, 0.669135, 1.32468, 1.9471)
