@@ -174,11 +174,10 @@ script = ExtResource("1_yvxag")
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player"]
 transform = Transform3D(0.211741, 0, 0, 0, 0.211741, 0, 0, 0, 0.211741, 0, 0.276412, 0)
 billboard = 2
-shaded = true
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_a1oeb")
 animation = &"walk"
-frame_progress = 0.460253
+frame_progress = 0.678928
 script = ExtResource("3_wa5qy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
