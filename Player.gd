@@ -31,6 +31,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
+	# Direction of sprite facing
 	if Input.is_action_pressed("walk_left"):
 		sprite.play("walk")
 		sprite.flip_h = true
@@ -46,4 +47,6 @@ func _physics_process(delta):
 	else:
 		sprite.play("default")
 		
-			
+	# Door Interact
+	
+	

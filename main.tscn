@@ -247,5 +247,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13038, 0.805688, 0)
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.358504, 0.805688, 0)
 
-[node name="Node3D" parent="." instance=ExtResource("5_juxe8")]
+[node name="frontentrance" parent="." instance=ExtResource("5_juxe8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.512547, 0.138024, 0.40245)
