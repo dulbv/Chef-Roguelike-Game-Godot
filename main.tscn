@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://byrri007p6dg"]
+[gd_scene load_steps=29 format=3 uid="uid://byrri007p6dg"]
 
 [ext_resource type="Texture2D" uid="uid://g2xyvk2djdav" path="res://resources/AnimationSheet.png" id="1_0ujs2"]
 [ext_resource type="Script" path="res://Player.gd" id="1_yvxag"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://AnimatedSprite3D.gd" id="3_wa5qy"]
 [ext_resource type="Texture2D" uid="uid://ckodjmkhgsyda" path="res://resources/d_buttons_down.png" id="5_74v47"]
 [ext_resource type="PackedScene" uid="uid://cd5cpqmfvhea8" path="res://frontentrance.tscn" id="5_juxe8"]
+[ext_resource type="Script" path="res://Sprite3D.gd" id="6_ii5km"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_k6tc1"]
 
@@ -199,11 +200,12 @@ libraries = {
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.97088, 0.239567, 0, -0.239567, 0.97088, 0, 0.492369, 0.952982)
 
-[node name="Sprite3D" type="Sprite3D" parent="Player"]
+[node name="HeadSprite" type="Sprite3D" parent="Player"]
 transform = Transform3D(0.0101823, 0, 0, 0, 0.00949769, 0, 0, 0, 1, 0, 0.446877, 0)
 visible = false
 billboard = 1
 texture = ExtResource("5_74v47")
+script = ExtResource("6_ii5km")
 
 [node name="Main Area" type="Node" parent="."]
 
