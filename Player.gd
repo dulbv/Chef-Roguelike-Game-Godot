@@ -5,14 +5,15 @@ extends CharacterBody3D
 
 # Movement Vars
 const BASE_SPEED = 0.75
-const SPRINT_SPEED = 1.4
+const SPRINT_SPEED = 1.8
 const JUMP_VELOCITY = 1
 
 # FOV Vars
-@export var normal_fov: float = 62.0
+@export var normal_fov: float = 65.0
 @export var walk_fov: float = 68.0
 @export var sprint_fov: float = 75.0
-@export var fov_speed: float = 4.0
+@export var fov_speed_out: float = 4.0   # Slower when zooming out
+@export var fov_speed_in: float = 10.0   # Faster when zooming in
 
 # Sprint logic
 var current_speed := BASE_SPEED
@@ -66,7 +67,7 @@ func _physics_process(delta):
 	else:
 		sprite.play("default")
 
-	# FOV Logic: walk = small boost, sprint = big boost, idle = normal
+	# FOV Tier Logic
 	var target_fov: float
 	if is_attempting_to_sprint:
 		target_fov = sprint_fov
@@ -75,4 +76,6 @@ func _physics_process(delta):
 	else:
 		target_fov = normal_fov
 
-	cam.fov = lerp(cam.fov, target_fov, delta * fov_speed)
+	# Choose lerp speed based on whether we're zooming in or out
+	var fov_lerp_speed = fov_speed_in if target_fov < cam.fov else fov_speed_out
+	cam.fov = lerp(cam.fov, target_fov, delta * fov_lerp_speed)
